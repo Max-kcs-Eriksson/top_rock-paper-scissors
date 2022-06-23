@@ -51,8 +51,8 @@ function capFirstLetter(string) {
 
 // Select rock paper scissor
 //     Player selection
-let playerSelection = prompt('Rock, Paper, or Scissors?', '');
-console.log(capFirstLetter(playerSelection));
+let playerSelection = capFirstLetter( prompt('Rock, Paper, or Scissors?', '') );
+console.log(playerSelection);
 //         User writes their choice in a prompt
 //             case-insensitive
 //             convert player input string to lower case
