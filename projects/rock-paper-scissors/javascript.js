@@ -49,14 +49,24 @@ function capFirstLetter(string) {
 
 // GAME EXECUTION
 
-// Select rock paper scissor
-//     Player selection
+// Player select rock, paper, or scissors by writing in a prompt.
+// Input is case-insensitive through function defined on line 37 - 47.
 let playerSelection = capFirstLetter( prompt('Rock, Paper, or Scissors?', '') );
-console.log(`Player chose: ${playerSelection}`);
+// Check if player wrote rock, paper, or scissor, and not something else.
+if (playerSelection === 'Rock') {
+    console.log(`Player chose: ${playerSelection}`);
+} else if (playerSelection === 'Paper') {
+    console.log(`Player chose: ${playerSelection}`);
+} else if (playerSelection === 'Scissor') {
+    console.log(`Player chose: ${playerSelection}`);
+} else {
+    alert(`Player didn\'t choose Rock, Paper, or Scissor!\n${playerSelection} is non of the above...`);
+}
+
 //         User writes their choice in a prompt
 //             case-insensitive
 //             convert player input string to lower case
-//     Computer selection
+// Computer select
 computerPlay();
 console.log(`Computer chose: ${computerSelection}`);
 // Round 1
