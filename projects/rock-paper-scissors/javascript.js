@@ -91,28 +91,31 @@ function singleRound (playerSelection, computerSelection) {
 
 //  Game:
 let playerScore = 0,
-    computerScore = 0;
+computerScore = 0;
 let roundCount = 1;
 
     //     • Round 
-    //         ◦ Player selection
-    /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
-    /************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
-    let playerName = 'Player';
-    let playerSelection = 'Rock';
-    console.log(`Player chooses: ${playerSelection}`);
-    //             ▪ User writes their choice in a prompt
-    //                 • case-insensitive
-    //                     ◦ convert player input string to lower case
+
+        // ◦ Player selection
+        /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
+        /************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
+        let playerName = 'pLaYeR';
+        // const playerName = capFirstLetter( prompt('What\'s your name?', '') );
+        let playerSelection = 'roCK';
+        // let playerSelection = capFirstLetter( prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissor`, ``) );
+        console.log(`${playerName} chooses: ${playerSelection}`);
+            // ▪ User writes their choice in a prompt
+            //     • case-insensitive
+            //         ◦ Capitalize first letter of playerSelection string
 
 
-    /* Computer selects rock, paper, or scissor randomly *
-    ****** computerPlay() defined at line 39 - 60 *******/
-    computerSelection = computerPlay();
-    console.log(`Computer chooses: ${computerSelection}`);
+        /* Computer selects rock, paper, or scissor randomly *
+        ****** computerPlay() defined at line 39 - 60 *******/
+        computerSelection = computerPlay();
+        console.log(`Computer chooses: ${computerSelection}`);
 
-    /*** Determine and declare winner of current round ***
-    ******* roundWinner() defined at line 65 - 81 *******/
-    singleRound (playerSelection, computerSelection);
-    console.log(`Player score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`);
+        /*** Determine and declare winner of current round ***
+        ******* roundWinner() defined at line 65 - 81 *******/
+        singleRound (playerSelection, computerSelection);
+        console.log(`${playerName} score: ${playerScore}`);
+        console.log(`Computer score: ${computerScore}`);
