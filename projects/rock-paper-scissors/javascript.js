@@ -16,9 +16,9 @@ function computerPlay() {
     let randomValue = getRandomInt(1, 3);
 
     // Assign numerical values to rock paper scissors.
-    let rock = 1;
-    let paper = 2;
-    let scissors = 3;
+    const rock = 1;
+    const paper = 2;
+    const scissors = 3;
 
     // Transform randomValue to rock paper scissors.
     if (randomValue === rock) {
@@ -49,28 +49,40 @@ function capFirstLetter(string) {
 
 // GAME EXECUTION
 
-// Player select rock, paper, or scissors by writing in a prompt.
-// Input is case-insensitive through function defined on line 37 - 47.
+/**
+ * Ask for players name
+ */
+const playerName = capFirstLetter( prompt('What\'s your name?', '') );
+
+/**
+ * Player select rock, paper, or scissors by writing in a prompt.
+ * Input is case-insensitive through function defined on line 37 - 47.
+ */
 let playerSelection = capFirstLetter( prompt('Rock, Paper, or Scissors?', '') );
 // Check if player wrote rock, paper, or scissor, and not something else.
 if (playerSelection === 'Rock') {
-    console.log(`Player chose: ${playerSelection}`);
+    console.log(`${playerName} chose: ${playerSelection}`);
 } else if (playerSelection === 'Paper') {
-    console.log(`Player chose: ${playerSelection}`);
+    console.log(`${playerName} chose: ${playerSelection}`);
 } else if (playerSelection === 'Scissor') {
-    console.log(`Player chose: ${playerSelection}`);
+    console.log(`${playerName} chose: ${playerSelection}`);
 } else {
-    alert(`Player didn\'t choose Rock, Paper, or Scissor!\n${playerSelection} is non of the above...`);
+    alert(`${playerName} didn\'t choose Rock, Paper, or Scissor!\n${playerSelection} is non of the above...`);
 }
 
-//         User writes their choice in a prompt
-//             case-insensitive
-//             convert player input string to lower case
-// Computer select
+/**
+ * Computer selection is generated randomly through function defined
+ * on line 13 - 43.
+*/
 computerPlay();
 console.log(`Computer chose: ${computerSelection}`);
+
+
 // Round 1
-//     declare winner
+// function playRound (playerSelection, computerSelection) {
+//     (playerSelection > computerSelection) ? 
+// }
+//     Decide and declare winner
 //         Compare playerSelection and computerSelection
 //     keep score
 // Round 2 - 4
