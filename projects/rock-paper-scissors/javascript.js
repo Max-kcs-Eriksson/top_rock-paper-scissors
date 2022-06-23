@@ -45,7 +45,7 @@ function computerPlay(computerSelection) {
     const rock = 1;
     const paper = 2;
     const scissors = 3;
-    
+
     // Transform randomValue to rock paper scissors.
     if (randomValue === rock) {
         computerSelection = 'Rock';
@@ -71,6 +71,10 @@ function computerPlay(computerSelection) {
 //  Game:
 //     • Round 
 //         ◦ Player selection
+/**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
+/************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
+let playerSelection = 'Rock';
+console.log(`Player chooses: ${playerSelection}`);
 //             ▪ User writes their choice in a prompt
 //                 • case-insensitive
 //                     ◦ convert player input string to lower case
