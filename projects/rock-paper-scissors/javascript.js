@@ -3,8 +3,8 @@
  **************** Utilities ****************
  ******************************************/
 
-/* Returns a random integer between min (inclusive) and max (inclusive). *
-* SOURCE: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range */
+/* Returns a random integer between min (inclusive) and max (inclusive). */
+/* SOURCE: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range */
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -59,9 +59,30 @@ function computerPlay(computerSelection) {
     return computerSelection;
 }
 
-//         ◦ Compare playerSelection and computerSelection
-//             ▪ declare winner
+/* Determine and declare winner of current round */
+/* Compare playerSelection and computerSelection */
+/* Increment roundCount, and winners score */
+function singleRound (playerSelection, computerSelection) {
+    let roundWinner;
+
+    if (playerSelection > computerSelection) {
+        roundWinner = `Winner of this round is: ${playerName}!`;
+        ++playerScore;
+        ++roundCount;
+    } else if (computerSelection > playerSelection) {
+        roundWinner = `Winner of this round is: Computer!`;
+        ++computerScore;
+        ++roundCount;
+    } else {
+        roundWinner = `It's a tie!`;
+        ++roundCount;
+    }
+    console.log(roundWinner);
+}
+
 //             ▪ keep score
+
+
 
  /******************************************
  ******************* GAME ******************
@@ -69,22 +90,29 @@ function computerPlay(computerSelection) {
  ******************************************/
 
 //  Game:
-//     • Round 
-//         ◦ Player selection
-/**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
-/************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
-let playerSelection = 'Rock';
-console.log(`Player chooses: ${playerSelection}`);
-//             ▪ User writes their choice in a prompt
-//                 • case-insensitive
-//                     ◦ convert player input string to lower case
+let playerScore = 0,
+    computerScore = 0;
+let roundCount = 1;
+
+    //     • Round 
+    //         ◦ Player selection
+    /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
+    /************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
+    let playerName = 'Player';
+    let playerSelection = 'Rock';
+    console.log(`Player chooses: ${playerSelection}`);
+    //             ▪ User writes their choice in a prompt
+    //                 • case-insensitive
+    //                     ◦ convert player input string to lower case
 
 
-/* Computer selects rock, paper, or scissor randomly *
-****** computerPlay() defined at line 39 - 60 *******/
-computerSelection = computerPlay();
-console.log(`Computer chooses: ${computerSelection}`);
+    /* Computer selects rock, paper, or scissor randomly *
+    ****** computerPlay() defined at line 39 - 60 *******/
+    computerSelection = computerPlay();
+    console.log(`Computer chooses: ${computerSelection}`);
 
-//         ◦ Compare playerSelection and computerSelection
-//             ▪ declare winner
-//             ▪ keep score
+    /*** Determine and declare winner of current round ***
+    ******* roundWinner() defined at line 65 - 81 *******/
+    singleRound (playerSelection, computerSelection);
+    console.log(`Player score: ${playerScore}`);
+    console.log(`Computer score: ${computerScore}`);
