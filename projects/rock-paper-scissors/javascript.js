@@ -9,7 +9,7 @@ function getRandomInt(min, max) {
 }
 
 // Returns a randomly generated selection.
-let computerSelection;
+let computerSelection = '';
 function computerPlay() {
     // Generate random integer.
     // GetRandomInt() is defined on line 5 - 9.
@@ -22,15 +22,28 @@ function computerPlay() {
 
     // Transform randomValue to rock paper scissors.
     if (randomValue === rock) {
-        computerSelection = 'Computer chose: rock';
+        computerSelection = 'Computer chose: Rock';
     } else if (randomValue === paper) {
-        computerSelection = 'Computer chose: paper';
+        computerSelection = 'Computer chose: Paper';
     } else if (randomValue === scissors) {
-        computerSelection = 'Computer chose: scissors';
+        computerSelection = 'Computer chose: Scissors';
     } else {
         alert('Computer didn\'t choose');
     }
     return computerSelection;
+}
+
+// Capitalize first letter of a string
+function capFirstLetter(string) {
+    // To lower case to circumvent ill use of capital letters.
+    let lowerCaseString = string.toLowerCase();
+    // Extract first letter of string and convert to upper case.
+    let firstLetter = lowerCaseString.slice(0, 1);
+    let capFirst = firstLetter.toUpperCase();
+    // Extract what comes after the first letter in the string.
+    let remains = lowerCaseString.slice(1);
+    // Fuses the two extractions together.
+    return capFirst.concat('', remains);
 }
 
 
@@ -38,8 +51,8 @@ function computerPlay() {
 
 // Select rock paper scissor
 //     Player selection
-let playerSelection = prompt('Rock, Paper, or Scissors?');
-console.log(playerSelection);
+let playerSelection = prompt('Rock, Paper, or Scissors?', '');
+console.log(capFirstLetter(playerSelection));
 //         User writes their choice in a prompt
 //             case-insensitive
 //             convert player input string to lower case
