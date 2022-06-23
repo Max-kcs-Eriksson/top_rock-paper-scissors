@@ -38,7 +38,8 @@ function computerPlay() {
 
 // Select rock paper scissor
 //     Player selection
-let playerSelection;
+let playerSelection = prompt('Rock, Paper, or Scissors?');
+console.log(playerSelection);
 //         User writes their choice in a prompt
 //             case-insensitive
 //             convert player input string to lower case
