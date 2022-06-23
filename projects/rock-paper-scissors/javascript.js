@@ -22,11 +22,11 @@ function computerPlay() {
 
     // Transform randomValue to rock paper scissors.
     if (randomValue === rock) {
-        computerSelection = 'Computer chose: Rock';
+        computerSelection = 'Rock';
     } else if (randomValue === paper) {
-        computerSelection = 'Computer chose: Paper';
+        computerSelection = 'Paper';
     } else if (randomValue === scissors) {
-        computerSelection = 'Computer chose: Scissors';
+        computerSelection = 'Scissors';
     } else {
         alert('Computer didn\'t choose');
     }
@@ -52,13 +52,13 @@ function capFirstLetter(string) {
 // Select rock paper scissor
 //     Player selection
 let playerSelection = capFirstLetter( prompt('Rock, Paper, or Scissors?', '') );
-console.log(playerSelection);
+console.log(`Player chose: ${playerSelection}`);
 //         User writes their choice in a prompt
 //             case-insensitive
 //             convert player input string to lower case
 //     Computer selection
 computerPlay();
-console.log(computerSelection);
+console.log(`Computer chose: ${computerSelection}`);
 // Round 1
 //     declare winner
 //         Compare playerSelection and computerSelection
