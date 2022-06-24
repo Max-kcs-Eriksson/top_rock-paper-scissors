@@ -131,6 +131,9 @@ function judgeRound(playerSelection, computerSelection) {
 }
 
 function singleRound () {
+    // Print roundCount + 1 as roundCount starts at zero, to make more readable.
+    console.log(`Round ${Number(roundCount + 1)} begins`);
+    
     // Player selection
     // playerPlay() is defined at line XX - XX.
     // playerSelection = playerPlay();
@@ -199,7 +202,7 @@ if (typeof playerName !== 'string') {
 
     // Round
     /**** Play Rock Paper Scissors for desiredNumRounds ***/
-for (i = roundCount; i < desiredNumRounds; i++) {
+for (roundCount; roundCount < desiredNumRounds; roundCount++) {
     /****** singleRound() defined at line XX - XX *******/
     singleRound ();
 
