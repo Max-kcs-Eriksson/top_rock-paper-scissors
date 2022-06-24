@@ -50,8 +50,18 @@ function playerPlay (playerSelection) {
     // Capitalize first letter of playerSelection.
     // This function is defined in line 15 - 25.
     playerSelection = capFirstLetter(playerSelection);
-
-    return playerSelection;
+    // Checks if player typed a legal choice in above prompt.
+    if (playerSelection === 'Rock') {
+        return playerSelection;
+    } else if (playerSelection === 'Paper') {
+        return playerSelection;
+    } else if (playerSelection === 'Scissors') {
+        return playerSelection;
+    } else if (playerSelection === 'Scissor') {
+        alert(`I\'m sorry to be the one to tell you ${playerName}, it\'s spelled "scissors" with an "s" at the end.\n\nPlease try again!`);
+    } else {
+        alert(`You didn\'t choose a legal value, ${playerName}!\n\nPlease try again!`);
+    }
 }
 
 //             User writes their choice in a prompt
