@@ -46,7 +46,7 @@ function presentYourself (playerName) {
 // Player selection
 function playerPlay (playerSelection) {
     // Gives playerSelection a string from a prompt.
-    playerSelection = prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
+    playerSelection = prompt(`Hi ${playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
     // Capitalize first letter of playerSelection.
     // This function is defined in line 15 - 25.
     playerSelection = capFirstLetter(playerSelection);
