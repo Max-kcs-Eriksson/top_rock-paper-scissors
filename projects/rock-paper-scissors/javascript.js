@@ -100,21 +100,9 @@ function computerPlay(computerSelection) {
     return computerSelection;
 }
 
-function singleRound () {
-    // Player selection
-    // playerPlay() is defined at line XX - XX.
-    playerSelection = playerPlay();
-    console.log(`${playerName} chooses: ${playerSelection}`);
-
-    /* Computer selects rock, paper, or scissor randomly *
-    ****** computerPlay() defined at line XX - XX *******/
-    computerSelection = computerPlay();
-    console.log(`Computer chooses: ${computerSelection}`);
-
-    // !!!!  COULD BE A SEPARATE FUNCTION   !!!!! //
-    // Determine and declare winner of current round.
-    // Compare playerSelection and computerSelection.
-    // Increment roundCount, and winners score.
+// Determine winner of a round.
+// Increment roundCount, and winners score.
+function judgeRound(playerSelection, computerSelection) {
     let roundWinner;
 
     if (playerSelection > computerSelection) {
@@ -129,6 +117,22 @@ function singleRound () {
         roundWinner = `It's a tie!`;
         ++roundCount;
     }
+    return roundWinner;
+}
+
+function singleRound () {
+    // Player selection
+    // playerPlay() is defined at line XX - XX.
+    playerSelection = playerPlay();
+    console.log(`${playerName} chooses: ${playerSelection}`);
+
+    // Computer selects rock, paper, or scissor randomly
+    // computerPlay() defined at line XX - XX.
+    computerSelection = computerPlay();
+    console.log(`Computer chooses: ${computerSelection}`);
+
+
+    roundWinner = judgeRound(playerSelection, computerSelection);
     console.log(roundWinner);
 }
 
