@@ -37,7 +37,9 @@ function presentYourself (playerName) {
     // Capitalize first letter of playerName if it is a string.
     // Player will be know as 'Anonymous' if the string is empty.
     // This function is defined in line 15 - 25.
-    if (playerName === '') {
+    if (typeof playerName !== 'string') {
+        return playerName;
+    } else if (playerName === '') {
         playerName = 'Anonymous';
     } else {
         playerName = capFirstLetter(playerName); 
@@ -54,12 +56,12 @@ function playerPlay (playerSelection) {
     // Capitalize first letter of playerSelection if it is a string.
     // This function is defined in line 15 - 25.
     // Returns playerSelection as null if it's not a string.
-    if (typeof playerSelection === 'string') {
-        playerSelection = capFirstLetter(playerSelection);
-    } else {
+    if (typeof playerSelection !== 'string') {
         return playerSelection;
+    } else {
+        playerSelection = capFirstLetter(playerSelection);
     }
-    // Checks if player typed a legal choice in above prompt.
+    // Return playerSelection if player typed a legal choice in above prompt.
     // If playerSelection is not Rock Paper or Scissors playerSelection return as undefined.
     if (playerSelection === 'Rock') {
         return playerSelection;
