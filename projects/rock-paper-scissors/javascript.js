@@ -29,7 +29,7 @@ function capFirstLetter(string) {
  ************ Game components **************
  ******************************************/
 //  Game:
-//      Asks for players name and capitalizes the initial.
+/* Asks for players name and capitalizes the initial with another function. */
 function presentYourself (playerName) {
     // Gets playerName as a string from a prompt.
     playerName = prompt('What\'s your name?', '');
@@ -109,10 +109,11 @@ let roundCount = 1;
 
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
-playerName = presentYourself();
+// playerName = presentYourself();
+// UNCOMMENT ABOVE LINE AND DELETE LINES UNTIL -
+const playerName = 'pLaYeR';
 console.log(`Player name: ${playerName}`);
-// let playerName = 'pLaYeR';
-        // const playerName = capFirstLetter( prompt('What\'s your name?', '') );
+// HERE, AFTER ALL TESTING IS DONE!
 
     //     • Round 
 
