@@ -100,8 +100,16 @@ function computerPlay(computerSelection) {
     return computerSelection;
 }
 
-function singleRound (playerSelection, computerSelection) {
-    
+function singleRound () {
+    // Player selection
+    // playerPlay() is defined at line XX - XX.
+    playerSelection = playerPlay();
+    console.log(`${playerName} chooses: ${playerSelection}`);
+
+    /* Computer selects rock, paper, or scissor randomly *
+    ****** computerPlay() defined at line XX - XX *******/
+    computerSelection = computerPlay();
+    console.log(`Computer chooses: ${computerSelection}`);
 
     // !!!!  COULD BE A SEPARATE FUNCTION   !!!!! //
     // Determine and declare winner of current round.
@@ -156,25 +164,9 @@ console.log(`Player name: ${playerName}`);
 
     // Round 
 
-        // Player selection
-        // playerPlay() is defined at line 47 - 65.
-        /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
-        let playerSelection = 'roCK';
-        playerSelection = playerPlay();
-        console.log(`${playerName} chooses: ${playerSelection}`);
-            // ▪ User writes their choice in a prompt
-            //     • case-insensitive
-            //         ◦ Capitalize first letter of playerSelection string
-
-
-        /* Computer selects rock, paper, or scissor randomly *
-        ****** computerPlay() defined at line 72 - 93 *******/
-        computerSelection = computerPlay();
-        console.log(`Computer chooses: ${computerSelection}`);
-
         /*** Determine and declare winner of current round ***
-        ******* singleRound() defined at line 98 - 114 *******/
-        singleRound (playerSelection, computerSelection);
+        ******* singleRound() defined at line XX - XX *******/
+        singleRound ();
 
         console.log(`${playerName} score: ${playerScore}`);
         console.log(`Computer score: ${computerScore}`);
