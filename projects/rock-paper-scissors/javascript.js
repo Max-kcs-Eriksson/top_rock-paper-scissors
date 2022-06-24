@@ -153,16 +153,17 @@ let roundCount = 1;
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
 playerName = presentYourself();
+// Re-calls presentYourself() is player closes prompt window.
+if (typeof playerName !== 'string') {
+    alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
+    presentYourself();
+}
 // UNCOMMENT ABOVE LINE AND DELETE LINES UNTIL -
 /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
 // const playerName = 'pLaYeR';
 console.log(`Player name: ${playerName}`);
 // HERE, AFTER ALL TESTING IS DONE!
 
-if (typeof playerName !== 'string') {
-    alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
-    presentYourself();
-}
 
 
 /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
