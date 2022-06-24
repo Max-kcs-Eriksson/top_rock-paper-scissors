@@ -100,10 +100,13 @@ function computerPlay(computerSelection) {
     return computerSelection;
 }
 
-/* Determine and declare winner of current round. */
-/* Compare playerSelection and computerSelection. */
-/* Increment roundCount, and winners score. */
 function singleRound (playerSelection, computerSelection) {
+    
+
+    // !!!!  COULD BE A SEPARATE FUNCTION   !!!!! //
+    // Determine and declare winner of current round.
+    // Compare playerSelection and computerSelection.
+    // Increment roundCount, and winners score.
     let roundWinner;
 
     if (playerSelection > computerSelection) {
@@ -143,6 +146,13 @@ playerName = presentYourself();
 // const playerName = 'pLaYeR';
 console.log(`Player name: ${playerName}`);
 // HERE, AFTER ALL TESTING IS DONE!
+
+
+/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+ * IF USING for LOOP TO CALL ON FUNCTION TO PLAY A SINGLE ROUND: *
+ ******* remove ++roundCount from singleRound() function. ********
+ **!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**/
+
 
     // Round 
 
