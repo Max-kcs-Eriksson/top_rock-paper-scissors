@@ -30,14 +30,18 @@ function capFirstLetter(string) {
  ******************************************/
 /*  Game: */
 
-/* Returns players name with a capital initial*/
+/* Get players name with a capital initial from a prompt*/
 function presentYourself (playerName) {
     // Gives playerName a string from a prompt.
     playerName = prompt('What\'s your name?', '');
-    // Capitalize first letter of playerName.
+    // Capitalize first letter of playerName if it is a string.
+    // Player will be know as 'Anonymous' if the string is empty.
     // This function is defined in line 15 - 25.
-    playerName = capFirstLetter(playerName);
-
+    if (playerName === '') {
+        playerName = 'Anonymous';
+    } else {
+        playerName = capFirstLetter(playerName); 
+    }
     return playerName;
 }
 
@@ -47,10 +51,16 @@ function presentYourself (playerName) {
 function playerPlay (playerSelection) {
     // Gives playerSelection a string from a prompt.
     playerSelection = prompt(`Hi ${playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
-    // Capitalize first letter of playerSelection.
+    // Capitalize first letter of playerSelection if it is a string.
     // This function is defined in line 15 - 25.
-    playerSelection = capFirstLetter(playerSelection);
+    // Returns playerSelection as null if it's not a string.
+    if (typeof playerSelection === 'string') {
+        playerSelection = capFirstLetter(playerSelection);
+    } else {
+        return playerSelection;
+    }
     // Checks if player typed a legal choice in above prompt.
+    // If playerSelection is not Rock Paper or Scissors playerSelection return as undefined.
     if (playerSelection === 'Rock') {
         return playerSelection;
     } else if (playerSelection === 'Paper') {
@@ -139,7 +149,7 @@ console.log(`Player name: ${playerName}`);
     // Round 
 
         // Player selection
-        // Function defined at line 47 - 55.
+        // playerPlay() is defined at line 47 - 65.
         /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
         let playerSelection = 'roCK';
         playerSelection = playerPlay();
@@ -150,12 +160,12 @@ console.log(`Player name: ${playerName}`);
 
 
         /* Computer selects rock, paper, or scissor randomly *
-        ****** computerPlay() defined at line 39 - 60 *******/
+        ****** computerPlay() defined at line 72 - 93 *******/
         computerSelection = computerPlay();
         console.log(`Computer chooses: ${computerSelection}`);
 
         /*** Determine and declare winner of current round ***
-        ******* roundWinner() defined at line 65 - 81 *******/
+        ******* singleRound() defined at line 98 - 114 *******/
         singleRound (playerSelection, computerSelection);
 
         console.log(`${playerName} score: ${playerScore}`);
