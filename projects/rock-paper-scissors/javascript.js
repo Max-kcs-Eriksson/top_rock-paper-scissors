@@ -28,21 +28,31 @@ function capFirstLetter(string) {
  **************** FUNCTIONS ****************
  ************ Game components **************
  ******************************************/
-//  Game:
-/* Asks for players name and capitalizes the initial with another function. */
+/*  Game: */
+
+/* Returns players name with a capital initial*/
 function presentYourself (playerName) {
-    // Gets playerName as a string from a prompt.
+    // Gives playerName a string from a prompt.
     playerName = prompt('What\'s your name?', '');
     // Capitalize first letter of playerName.
     // This function is defined in line 15 - 25.
     playerName = capFirstLetter(playerName);
 
-    return playerName
+    return playerName;
 }
 
-//     Round 
-//         Player selection
-//          let playerSelection = capFirstLetter( prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissor`, ``) );
+//     Round
+
+// Player selection
+function playerPlay (playerSelection) {
+    // Gives playerSelection a string from a prompt.
+    playerSelection = prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
+    // Capitalize first letter of playerSelection.
+    // This function is defined in line 15 - 25.
+    playerSelection = capFirstLetter(playerSelection);
+
+    return playerSelection;
+}
 
 //             User writes their choice in a prompt
 //                 case-insensitive
@@ -109,19 +119,20 @@ let roundCount = 1;
 
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
-// playerName = presentYourself();
+playerName = presentYourself();
 // UNCOMMENT ABOVE LINE AND DELETE LINES UNTIL -
-const playerName = 'pLaYeR';
+/**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
+// const playerName = 'pLaYeR';
 console.log(`Player name: ${playerName}`);
 // HERE, AFTER ALL TESTING IS DONE!
 
-    //     • Round 
+    // Round 
 
-        // ◦ Player selection
+        // Player selection
+        // Function defined at line 47 - 55.
         /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
-        /************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
         let playerSelection = 'roCK';
-        // let playerSelection = capFirstLetter( prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissor`, ``) );
+        playerSelection = playerPlay();
         console.log(`${playerName} chooses: ${playerSelection}`);
             // ▪ User writes their choice in a prompt
             //     • case-insensitive
@@ -136,5 +147,6 @@ console.log(`Player name: ${playerName}`);
         /*** Determine and declare winner of current round ***
         ******* roundWinner() defined at line 65 - 81 *******/
         singleRound (playerSelection, computerSelection);
+
         console.log(`${playerName} score: ${playerScore}`);
         console.log(`Computer score: ${computerScore}`);
