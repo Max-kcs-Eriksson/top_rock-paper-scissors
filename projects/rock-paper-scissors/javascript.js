@@ -72,7 +72,7 @@ function playerPlay (playerSelection) {
     } else if (playerSelection === 'Scissor') {
         alert(`I\'m sorry to be the one to tell you ${playerName}, it\'s spelled "scissors" with an "s" at the end.\n\nPlease try again!`);
     } else {
-        alert(`You didn\'t choose a legal value, ${playerName}!\n\nPlease try again!`);
+        
     }
 }
 
@@ -105,6 +105,19 @@ function computerPlay(computerSelection) {
 function judgeRound(playerSelection, computerSelection) {
     let roundWinner;
 
+    //What beats what
+    const rock = 'Rock' > 'Scissors';
+    const paper = 'Paper' > 'Rock';
+    const scissors = 'Scissors' > 'Paper';
+
+    // if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
+
+    // } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+
+    // } else (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+
+    // }
+
     if (playerSelection > computerSelection) {
         roundWinner = `Winner of this round is: ${playerName}!\n${playerSelection} beats ${computerSelection}`;
         ++playerScore;
@@ -123,16 +136,22 @@ function judgeRound(playerSelection, computerSelection) {
 function singleRound () {
     // Player selection
     // playerPlay() is defined at line XX - XX.
-    playerSelection = playerPlay();
+    // playerSelection = playerPlay();
+    
+
+    if (typeof playerSelection !== 'string') {
+        alert(`You didn\'t choose a legal value, ${playerName}!\n\nPlease try again!`);
+        playerSelection = playerPlay();
+    } else {
+        // Computer selects rock, paper, or scissor randomly
+        // computerPlay() defined at line XX - XX.
+        computerSelection = computerPlay();
+        // Decides who won the round.
+        roundWinner = judgeRound(playerSelection, computerSelection);
+        
+    }
     console.log(`${playerName} chooses: ${playerSelection}`);
-
-    // Computer selects rock, paper, or scissor randomly
-    // computerPlay() defined at line XX - XX.
-    computerSelection = computerPlay();
     console.log(`Computer chooses: ${computerSelection}`);
-
-
-    roundWinner = judgeRound(playerSelection, computerSelection);
     console.log(roundWinner);
 }
 
@@ -145,25 +164,34 @@ function singleRound () {
  ************* Game execution **************
  ******************************************/
 
+/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+ **           FOR TESTING ONLY            */
+let playerName = 'mAx';   // presentYourself()
+let playerSelection = 'paPER';    // inside singleRound()
+playerSelection = capFirstLetter(playerSelection);
+/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+ **!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
 //  Game:
 let playerScore = 0,
-computerScore = 0;
-let roundCount = 1;
+    computerScore = 0;
+let desiredNumRounds = 5;
+let roundCount = 0;
 
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
-playerName = presentYourself();
+// playerName = presentYourself();
 // Re-calls presentYourself() is player closes prompt window.
 if (typeof playerName !== 'string') {
     alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
-    presentYourself();
-}
-// UNCOMMENT ABOVE LINE AND DELETE LINES UNTIL -
-/**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
-// const playerName = 'pLaYeR';
-console.log(`Player name: ${playerName}`);
-// HERE, AFTER ALL TESTING IS DONE!
+    playerName = presentYourself();
+} else {
+    console.log(`Player name: ${playerName}`);
 
+    /****************************************/
+    /**FUNCTION TO PLAY X AMOUNT OF ROUNDS***/
+    /****************************************/
+}
 
 
 /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
@@ -172,11 +200,22 @@ console.log(`Player name: ${playerName}`);
  **!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**/
 
 
-    // Round 
+    // Round
+    /**** Play Rock Paper Scissors for desiredNumRounds ***/
+for (i = 0; i < desiredNumRounds; i++) {
+    /****** singleRound() defined at line XX - XX *******/
+    singleRound ();
 
-        /*** Determine and declare winner of current round ***
-        ******* singleRound() defined at line XX - XX *******/
-        singleRound ();
+    console.log(`${playerName} score: ${playerScore}`);
+    console.log(`Computer score: ${computerScore}`);
+}
 
-        console.log(`${playerName} score: ${playerScore}`);
-        console.log(`Computer score: ${computerScore}`);
+
+
+/*********************************************************************
+ * *******************************************************************
+ * KNOW ISSUES:
+ * *comparison of playerSelection and computerSelection is not working
+ * as intended! - It is doing an alphabetical comparison!
+ * *******************************************************************
+**********************************************************************/
