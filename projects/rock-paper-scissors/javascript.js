@@ -30,7 +30,7 @@ function capFirstLetter(string) {
  ******************************************/
 /*  Game: */
 
-/* Get players name with a capital initial from a prompt*/
+/* Get players name with a capital initial from a prompt. Input is case-insensitive. */
 function presentYourself (playerName) {
     // Gives playerName a string from a prompt.
     playerName = prompt('What\'s your name?', '');
@@ -49,7 +49,7 @@ function presentYourself (playerName) {
 
 //     Round
 
-// Player selection
+/* Player selects Rock Paper or Scissors. Input is case-insensitive. */
 function playerPlay (playerSelection) {
     // Gives playerSelection a string from a prompt.
     playerSelection = prompt(`Hi ${playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
@@ -75,10 +75,6 @@ function playerPlay (playerSelection) {
         alert(`You didn\'t choose a legal value, ${playerName}!\n\nPlease try again!`);
     }
 }
-
-//             User writes their choice in a prompt
-//                 case-insensitive
-//                     convert player input string to lower case
 
 /* Returns a randomly generated computerSelection: Rock Paper Scissor. */
 function computerPlay(computerSelection) {
