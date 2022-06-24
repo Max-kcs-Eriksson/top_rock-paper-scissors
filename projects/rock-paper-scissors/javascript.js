@@ -159,6 +159,11 @@ playerName = presentYourself();
 console.log(`Player name: ${playerName}`);
 // HERE, AFTER ALL TESTING IS DONE!
 
+if (typeof playerName !== 'string') {
+    alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
+    presentYourself();
+}
+
 
 /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
  * IF USING for LOOP TO CALL ON FUNCTION TO PLAY A SINGLE ROUND: *
