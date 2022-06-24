@@ -29,11 +29,24 @@ function capFirstLetter(string) {
  ************ Game components **************
  ******************************************/
 //  Game:
-//     • Round 
-//         ◦ Player selection
-//             ▪ User writes their choice in a prompt
-//                 • case-insensitive
-//                     ◦ convert player input string to lower case
+//      Asks for players name and capitalizes the initial.
+function presentYourself (playerName) {
+    // Gets playerName as a string from a prompt.
+    playerName = prompt('What\'s your name?', '');
+    // Capitalize first letter of playerName.
+    // This function is defined in line 15 - 25.
+    playerName = capFirstLetter(playerName);
+
+    return playerName
+}
+
+//     Round 
+//         Player selection
+//          let playerSelection = capFirstLetter( prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissor`, ``) );
+
+//             User writes their choice in a prompt
+//                 case-insensitive
+//                     convert player input string to lower case
 
 /* Returns a randomly generated computerSelection: Rock Paper Scissor. */
 function computerPlay(computerSelection) {
@@ -59,18 +72,18 @@ function computerPlay(computerSelection) {
     return computerSelection;
 }
 
-/* Determine and declare winner of current round */
-/* Compare playerSelection and computerSelection */
-/* Increment roundCount, and winners score */
+/* Determine and declare winner of current round. */
+/* Compare playerSelection and computerSelection. */
+/* Increment roundCount, and winners score. */
 function singleRound (playerSelection, computerSelection) {
     let roundWinner;
 
     if (playerSelection > computerSelection) {
-        roundWinner = `Winner of this round is: ${playerName}!`;
+        roundWinner = `Winner of this round is: ${playerName}!\n${playerSelection} beats ${computerSelection}`;
         ++playerScore;
         ++roundCount;
     } else if (computerSelection > playerSelection) {
-        roundWinner = `Winner of this round is: Computer!`;
+        roundWinner = `Winner of this round is: Computer!\n${computerSelection} beats ${playerSelection}`;
         ++computerScore;
         ++roundCount;
     } else {
@@ -94,13 +107,18 @@ let playerScore = 0,
 computerScore = 0;
 let roundCount = 1;
 
+// Asks for players name and capitalizes the initial.
+// Function defined at line 33 - 41.
+playerName = presentYourself();
+console.log(`Player name: ${playerName}`);
+// let playerName = 'pLaYeR';
+        // const playerName = capFirstLetter( prompt('What\'s your name?', '') );
+
     //     • Round 
 
         // ◦ Player selection
         /**** REMOVE LATER - THIS IN ONLY FOR CONVENIENT TESTING *****/
         /************* MAKE FUNCTION FOR PLAYER CHOICE ***************/
-        let playerName = 'pLaYeR';
-        // const playerName = capFirstLetter( prompt('What\'s your name?', '') );
         let playerSelection = 'roCK';
         // let playerSelection = capFirstLetter( prompt(`Hi @{playerName}!\nPlease choose Rock, Paper, or Scissor`, ``) );
         console.log(`${playerName} chooses: ${playerSelection}`);
