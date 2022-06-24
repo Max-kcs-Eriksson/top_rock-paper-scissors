@@ -121,14 +121,11 @@ function judgeRound(playerSelection, computerSelection) {
     if (playerSelection > computerSelection) {
         roundWinner = `Winner of this round is: ${playerName}!\n${playerSelection} beats ${computerSelection}`;
         ++playerScore;
-        ++roundCount;
     } else if (computerSelection > playerSelection) {
         roundWinner = `Winner of this round is: Computer!\n${computerSelection} beats ${playerSelection}`;
         ++computerScore;
-        ++roundCount;
     } else {
         roundWinner = `It's a tie!`;
-        ++roundCount;
     }
     return roundWinner;
 }
@@ -202,7 +199,7 @@ if (typeof playerName !== 'string') {
 
     // Round
     /**** Play Rock Paper Scissors for desiredNumRounds ***/
-for (i = 0; i < desiredNumRounds; i++) {
+for (i = roundCount; i < desiredNumRounds; i++) {
     /****** singleRound() defined at line XX - XX *******/
     singleRound ();
 
