@@ -52,7 +52,8 @@ function presentYourself (playerName) {
 /* Player selects Rock Paper or Scissors. Input is case-insensitive. */
 function playerPlay (playerSelection) {
     // Gives playerSelection a string from a prompt.
-    playerSelection = prompt(`Hi ${playerName}!\nPlease choose Rock, Paper, or Scissors`, ``);
+    // roundCount + 1 as roundCount starts at zero, to make more readable.
+    playerSelection = prompt(`Round ${Number(roundCount + 1)} begins.\nPlease choose Rock, Paper, or Scissors`, ``);
     // Capitalize first letter of playerSelection if it is a string.
     // This function is defined in line 15 - 25.
     // Returns playerSelection as null if it's not a string.
@@ -106,37 +107,33 @@ function judgeRound(playerSelection, computerSelection) {
     let roundWinner;
 
     //What beats what
-    const rock = 'Rock' > 'Scissors';
-    const paper = 'Paper' > 'Rock';
-    const scissors = 'Scissors' > 'Paper';
+    // 'Rock' > 'Scissors';
+    // 'Paper' > 'Rock';
+    // 'Scissors' > 'Paper';
 
-    // if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
-
-    // } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-
-    // } else (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-
-    // }
-
-    if (playerSelection > computerSelection) {
-        roundWinner = `Winner of this round is: ${playerName}!\n${playerSelection} beats ${computerSelection}`;
+    if (playerSelection === computerSelection) {
+        roundWinner = 'tie';
+    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
+        roundWinner = playerName;
         ++playerScore;
-    } else if (computerSelection > playerSelection) {
-        roundWinner = `Winner of this round is: Computer!\n${computerSelection} beats ${playerSelection}`;
-        ++computerScore;
+    } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+        roundWinner = playerName;
+        ++playerScore;
+    } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+        roundWinner = playerName;
+        ++playerScore;
     } else {
-        roundWinner = `It's a tie!`;
+        roundWinner = 'Computer';
+        ++computerScore;
     }
     return roundWinner;
 }
 
 function singleRound () {
-    // Print roundCount + 1 as roundCount starts at zero, to make more readable.
-    console.log(`Round ${Number(roundCount + 1)} begins`);
-    
+    console.log(`ROUND ${Number(roundCount + 1)}:`);
     // Player selection
     // playerPlay() is defined at line XX - XX.
-    // playerSelection = playerPlay();
+    playerSelection = playerPlay();
     
 
     if (typeof playerSelection !== 'string') {
@@ -152,7 +149,13 @@ function singleRound () {
     }
     console.log(`${playerName} chooses: ${playerSelection}`);
     console.log(`Computer chooses: ${computerSelection}`);
-    console.log(roundWinner);
+    if (roundWinner === 'tie') {
+        console.log(`It's a tie!`);
+    } else if (roundWinner === playerName) {
+        console.log(`${playerName} wins!\n${playerSelection} beats ${computerSelection}`);
+    } else {
+        console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
+    }
 }
 
 //             ▪ keep score
@@ -163,15 +166,7 @@ function singleRound () {
  ******************* GAME ******************
  ************* Game execution **************
  ******************************************/
-
-/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
- **           FOR TESTING ONLY            */
-let playerName = 'mAx';   // presentYourself()
-let playerSelection = 'paPER';    // inside singleRound()
-playerSelection = capFirstLetter(playerSelection);
-/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
- **!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
+ alert(`Press F12 to open browser console`);
 //  Game:
 let playerScore = 0,
     computerScore = 0;
@@ -180,42 +175,26 @@ let roundCount = 0;
 
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
-// playerName = presentYourself();
+playerName = presentYourself();
 // Re-calls presentYourself() is player closes prompt window.
 if (typeof playerName !== 'string') {
     alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
     playerName = presentYourself();
 } else {
     console.log(`Player name: ${playerName}`);
-
-    /****************************************/
-    /**FUNCTION TO PLAY X AMOUNT OF ROUNDS***/
-    /****************************************/
 }
 
 
-/**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
- * IF USING for LOOP TO CALL ON FUNCTION TO PLAY A SINGLE ROUND: *
- ******* remove ++roundCount from singleRound() function. ********
- **!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**/
-
-
-    // Round
-    /**** Play Rock Paper Scissors for desiredNumRounds ***/
+// Play Rock Paper Scissors for desiredNumRounds
 for (roundCount; roundCount < desiredNumRounds; roundCount++) {
-    /****** singleRound() defined at line XX - XX *******/
+    // singleRound() defined at line XX - XX
     singleRound ();
 
     console.log(`${playerName} score: ${playerScore}`);
     console.log(`Computer score: ${computerScore}`);
 }
 
-
-
-/*********************************************************************
- * *******************************************************************
- * KNOW ISSUES:
- * *comparison of playerSelection and computerSelection is not working
- * as intended! - It is doing an alphabetical comparison!
- * *******************************************************************
-**********************************************************************/
+// Declare highest score
+let setWinner;
+(playerScore > computerScore) ? setWinner = playerName : setWinner = 'Computer';
+alert(`THE WINNER IS ${setWinner}\nSee details in console`);
