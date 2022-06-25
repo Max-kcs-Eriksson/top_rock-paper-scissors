@@ -107,10 +107,6 @@ function judgeRound(playerSelection, computerSelection) {
     let roundWinner;
 
     //What beats what
-    // 'Rock' > 'Scissors';
-    // 'Paper' > 'Rock';
-    // 'Scissors' > 'Paper';
-
     if (playerSelection === computerSelection) {
         roundWinner = 'tie';
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors') {
@@ -129,7 +125,7 @@ function judgeRound(playerSelection, computerSelection) {
     return roundWinner;
 }
 
-function singleRound () {
+function playRound () {
     console.log(`ROUND ${Number(roundCount + 1)}:`);
     // Player selection
     // playerPlay() is defined at line XX - XX.
@@ -158,9 +154,6 @@ function singleRound () {
     }
 }
 
-//             ▪ keep score
-
-
 
  /******************************************
  ******************* GAME ******************
@@ -188,7 +181,7 @@ if (typeof playerName !== 'string') {
 // Play Rock Paper Scissors for desiredNumRounds
 for (roundCount; roundCount < desiredNumRounds; roundCount++) {
     // singleRound() defined at line XX - XX
-    singleRound ();
+    playRound ();
 
     console.log(`${playerName} score: ${playerScore}`);
     console.log(`Computer score: ${computerScore}`);
@@ -197,4 +190,4 @@ for (roundCount; roundCount < desiredNumRounds; roundCount++) {
 // Declare highest score
 let setWinner;
 (playerScore > computerScore) ? setWinner = playerName : setWinner = 'Computer';
-alert(`THE WINNER IS ${setWinner}\nSee details in console`);
+alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
