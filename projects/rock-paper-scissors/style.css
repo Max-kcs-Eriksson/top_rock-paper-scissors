@@ -108,10 +108,10 @@ h1 {
     padding: .75em 2.5em;
     font-weight: 900;
     font-size: 1.25rem;
-    transition: .25s ease;
+    transition: .04s;
 }
 
-.controller__button:hover {
+.controller__button:active {
     transform: scale(1.05);
     box-shadow: 0 0 3px white,
                 0 0 7px white,
