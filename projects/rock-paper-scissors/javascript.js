@@ -1,7 +1,7 @@
-/*******************************************
- **************** FUNCTIONS ****************
- **************** Utilities ****************
- ******************************************/
+/******************************************
+**************** FUNCTIONS ****************
+**************** Utilities ****************
+******************************************/
 
 /* Returns a random integer between min (inclusive) and max (inclusive). */
 /* SOURCE: https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range */
@@ -24,10 +24,10 @@ function capFirstLetter(string) {
     return capFirst.concat('', remains);
 }
 
-/*******************************************
- **************** FUNCTIONS ****************
- ************ Game components **************
- ******************************************/
+/******************************************
+**************** FUNCTIONS ****************
+************ Game components **************
+******************************************/
 /*  Game: */
 
 /* Get players name with a capital initial from a prompt. Input is case-insensitive. */
@@ -155,10 +155,13 @@ function playRound () {
 }
 
 
- /******************************************
- ******************* GAME ******************
- ************* Game execution **************
- ******************************************/
+/******************************************
+******************* GAME ******************
+************* Game execution **************
+******************************************/
+
+/*  Take down while working on UI
+
  alert(`Press F12 to open browser console`);
 //  Game:
 let playerScore = 0,
@@ -191,3 +194,5 @@ for (roundCount; roundCount < desiredNumRounds; roundCount++) {
 let setWinner;
 (playerScore > computerScore) ? setWinner = playerName : setWinner = 'Computer';
 alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
+
+*/
