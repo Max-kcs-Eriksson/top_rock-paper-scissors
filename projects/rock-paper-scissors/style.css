@@ -1,3 +1,44 @@
+/* FOR TESTING ONLY */
+* {
+    border: 1px solid red;
+}
+
+/* GENERAL */
 body {
-    background-color: black;
+    background-color: rgb(10, 15, 25);
+    color: rgb(215, 235, 255);
+}
+
+/* WRAPPER */
+.wrapper {
+    /* FOR TESTING ONLY */
+    /* **************** */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* SCORE BOARD */
+.score-board--placeholder {
+    background-color: rgb(215, 235, 255);
+    color: rgb(10, 15, 25);
+    width: 75%;
+    min-height: 250px;
+}
+
+
+/* CONTROLLER */
+.controller {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    width: 75%;
+}
+
+.controller__button {
+    background-color: rgb(215, 235, 255);
+    color: rgb(10, 15, 25);
+    width: 7em;
 }
