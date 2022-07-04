@@ -53,25 +53,29 @@ function presentYourself (playerName) {
 function playerPlay (playerSelection) {
     // Gives playerSelection a string from a prompt.
     // roundCount + 1 as roundCount starts at zero, to make more readable.
-    playerSelection = prompt(`Round ${Number(roundCount + 1)} begins.\nPlease choose Rock, Paper, or Scissors`, ``);
+    
+    // playerSelection = prompt(`Round ${Number(roundCount + 1)} begins.\nPlease choose Rock, Paper, or Scissors`, ``);
+
     // Capitalize first letter of playerSelection if it is a string.
     // This function is defined in line 15 - 25.
     // Returns playerSelection as null if it's not a string.
-    if (typeof playerSelection !== 'string') {
-        return playerSelection;
-    } else {
-        playerSelection = capFirstLetter(playerSelection);
-    }
+
+    // if (typeof playerSelection !== 'string') {
+    //     return playerSelection;
+    // } else {
+    //     playerSelection = capFirstLetter(playerSelection);
+    // }
+
     // Return playerSelection if player typed a legal choice in above prompt.
     // If playerSelection is not Rock Paper or Scissors playerSelection return as undefined.
-    if (playerSelection === 'Rock') {
+    if (playerSelection === 'rock') {
         return playerSelection;
-    } else if (playerSelection === 'Paper') {
+    } else if (playerSelection === 'paper') {
         return playerSelection;
-    } else if (playerSelection === 'Scissors') {
+    } else if (playerSelection === 'scissors') {
         return playerSelection;
-    } else if (playerSelection === 'Scissor') {
-        alert(`I\'m sorry to be the one to tell you ${playerName}, it\'s spelled "scissors" with an "s" at the end.\n\nPlease try again!`);
+    } else if (playerSelection === 'scissor') {
+        alert(`I\'m sorry to be the one to tell you Player, it\'s spelled "scissors" with an "s" at the end.\n\nPlease try again!`);
     } else {
         
     }
@@ -125,15 +129,15 @@ function judgeRound(playerSelection, computerSelection) {
     return roundWinner;
 }
 
-function playRound () {
+function playRound() {
     console.log(`ROUND ${Number(roundCount + 1)}:`);
     // Player selection
     // playerPlay() is defined at line XX - XX.
-    playerSelection = playerPlay();
+    // playerSelection = playerPlay();
     
 
     if (typeof playerSelection !== 'string') {
-        alert(`You didn\'t choose a legal value, ${playerName}!\n\nPlease try again!`);
+        alert(`You didn\'t choose a legal value, Player!\n\nPlease try again!`);
         playerSelection = playerPlay();
     } else {
         // Computer selects rock, paper, or scissor randomly
@@ -143,12 +147,12 @@ function playRound () {
         roundWinner = judgeRound(playerSelection, computerSelection);
         
     }
-    console.log(`${playerName} chooses: ${playerSelection}`);
+    console.log(`Player chooses: ${playerSelection}`);
     console.log(`Computer chooses: ${computerSelection}`);
     if (roundWinner === 'tie') {
         console.log(`It's a tie!`);
     } else if (roundWinner === playerName) {
-        console.log(`${playerName} wins!\n${playerSelection} beats ${computerSelection}`);
+        console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
     } else {
         console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
     }
@@ -163,12 +167,16 @@ function playRound () {
 /*  Take down while working on UI
 
  alert(`Press F12 to open browser console`);
+*/
+
 //  Game:
 let playerScore = 0,
     computerScore = 0;
 let desiredNumRounds = 5;
 let roundCount = 0;
 
+let playerName = 'Player';
+/*
 // Asks for players name and capitalizes the initial.
 // Function defined at line 33 - 41.
 playerName = presentYourself();
@@ -177,16 +185,15 @@ if (typeof playerName !== 'string') {
     alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
     playerName = presentYourself();
 } else {
-    console.log(`Player name: ${playerName}`);
+    console.log(`Player name: Player`);
 }
-
 
 // Play Rock Paper Scissors for desiredNumRounds
 for (roundCount; roundCount < desiredNumRounds; roundCount++) {
     // singleRound() defined at line XX - XX
     playRound ();
 
-    console.log(`${playerName} score: ${playerScore}`);
+    console.log(`Player score: ${playerScore}`);
     console.log(`Computer score: ${computerScore}`);
 }
 
@@ -196,3 +203,40 @@ let setWinner;
 alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
 
 */
+
+/******************************************
+******************* GAME ******************
+***************** Game UI *****************
+******************************************/
+
+/*           Controller buttons          */
+const controllerButtons = document.querySelectorAll('.controller__button');
+controllerButtons.forEach((button => {
+    // INSERT CORRECT FUNCTION
+    // THIS IS FOR TESTING ONLY
+    button.addEventListener('click', () => {
+        let playerSelection = capFirstLetter(String(button.id));
+
+        console.log(typeof button.id);
+        console.log(playerSelection);
+
+        // return playerSelection;
+        
+        // Computer selects rock, paper, or scissor randomly
+        // computerPlay() defined at line XX - XX.
+        computerSelection = computerPlay();
+        // Decides who won the round.
+        roundWinner = judgeRound(playerSelection, computerSelection);
+
+        console.log(`Player chooses: ${playerSelection}`);
+        console.log(`Computer chooses: ${computerSelection}`);
+
+        if (roundWinner === 'tie') {
+            console.log(`It's a tie!`);
+        } else if (roundWinner === playerName) {
+            console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
+        } else {
+            console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
+        }
+    });
+}));
