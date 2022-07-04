@@ -4,9 +4,37 @@
         <meta charset="UTF -8">
         <title>Rock Paper Scissors</title>
         <link rel="stylesheet" href="./style.css">
-        <script defer src="./javascript.js"></script>
+        <script src="./javascript.js"  defer></script>
     </head>
     <body>
-        
+        <header>
+            <h1>ROCK PAPER SCISSORS</h1>
+        </header>
+        <div class="wrapper">
+            <!-- To maintain layout when empty -->
+            <div class="score-board--placeholder">
+                <div class="score-board">
+                    <!-- FOR TESTING ONLY -->
+                    <p>SCORE BOARD</p>
+                    <!-- Manipulate DOM -->
+                </div>
+                <div class="round-result">
+                    <!-- FOR TESTING ONLY -->
+                    <p>ROUND RESULT</p>
+                    <!-- Manipulate DOM -->
+                </div>
+            </div>
+            <div class="controller">
+                <button id="rock" class="button controller__button">
+                    <p>Rock</p>
+                </button>
+                <button id="paper" class="button controller__button">
+                    <p>Paper</p>
+                </button>
+                <button id="scissors" class="button controller__button">
+                    <p>Scissors</p>
+                </button>
+            </div>
+        </div>
     </body>
 </html>
