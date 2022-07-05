@@ -137,29 +137,32 @@ function playRound(playerSelection) {
         roundWinner = judgeRound(playerSelection, computerSelection);
 
         // Display:
-            // Round
-            // Player choice
-            // Computer choice
+        // Current round count
+        roundNumberPara.textContent = `ROUND: ${Number(roundCount + 1)}`;
             
-            // Who wins
-
-        console.log(`ROUND ${Number(roundCount + 1)}:`);
-        console.log(`Player chooses: ${playerSelection}`);
-        console.log(`Computer chooses: ${computerSelection}`);
+        // Player choice
+        playerSelectionPara.textContent = `Player chooses: ${playerSelection}`;
+        // Computer choice
+        computerSelectionPara.textContent = `Computer chooses: ${computerSelection}`;
+            
+        // Who wins
 
         if (roundWinner === 'tie') {
-            console.log(`It's a tie!`);
+            roundWinnerPara.textContent = `It's a tie!`;
+            // console.log(`It's a tie!`);
         } else if (roundWinner === playerName) {
-            console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
+            roundWinnerPara.textContent = `Player wins!\n${playerSelection} beats ${computerSelection}`;
+            // console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
         } else {
-            console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
+            roundWinnerPara.textContent = `Computer wins!\n${computerSelection} beats ${playerSelection}`;
+            // console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
         }
 
         // Display:
-            // Player score
-            // Computer score
-        console.log(`Player score: ${playerScore}`);
-        console.log(`Computer score: ${computerScore}`);
+        // Player score
+        playerScorePara.textContent = `Player score: ${playerScore}`;
+        // Computer score
+        computerScorePara.textContent = `Computer score: ${computerScore}`;
 
         roundCount++;
 }
@@ -215,15 +218,50 @@ alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
 ***************** Game UI *****************
 ******************************************/
 
+/*             Restart button            */
+const restartButton = document.querySelector('.restart--button');
+restartButton.addEventListener('click', () => {
+    window.location.reload();
+});
+
 /*           Controller buttons          */
 const controllerButtons = document.querySelectorAll('.controller__button');
 controllerButtons.forEach((button => {
     button.addEventListener('click', () => {
         let playerSelection = capFirstLetter(String(button.id));
-
-            // console.log(typeof button.id);
-            // console.log(playerSelection);
-
+        
+        // console.log(typeof button.id);
+        // console.log(playerSelection);
+        
         playRound(playerSelection);
     });
 }));
+
+/*   Elements to be used in functions   */
+// In .top-bar
+const roundCounterDiv = document.querySelector('.round-counter');
+
+// Create and append elements with no text content
+const roundNumberPara = document.createElement('p');
+roundCounterDiv.appendChild(roundNumberPara);
+
+
+// In .score-board--placeholder //
+const scoreBoardDiv = document.querySelector('.score-board');
+
+// Create and append elements with no text content
+const playerScorePara = document.createElement('p');
+scoreBoardDiv.appendChild(playerScorePara);
+const computerScorePara = document.createElement('p');
+scoreBoardDiv.appendChild(computerScorePara);
+
+
+const roundResultDiv = document.querySelector('.round-result');
+
+// Create and append elements with no text content
+const playerSelectionPara = document.createElement('p');
+roundResultDiv.appendChild(playerSelectionPara);
+const computerSelectionPara = document.createElement('p');
+roundResultDiv.appendChild(computerSelectionPara);
+const roundWinnerPara = document.createElement('p');
+roundResultDiv.appendChild(roundWinnerPara);
