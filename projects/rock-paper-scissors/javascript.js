@@ -160,6 +160,8 @@ function playRound(playerSelection) {
             // Computer score
         console.log(`Player score: ${playerScore}`);
         console.log(`Computer score: ${computerScore}`);
+
+        roundCount++;
 }
 
 
