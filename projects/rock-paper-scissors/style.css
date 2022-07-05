@@ -1,8 +1,8 @@
 /* FOR TESTING ONLY */
 
-* {
+/* * {
     border: 1px solid red;
-}
+} */
 
 /* GENERAL */
 * {
@@ -78,9 +78,10 @@ h1 {
     width: 74.5%;
 }
 
-.restart,
-.play {
+.restart--button,
+.play--button {
     min-width: 6em;
+    min-height: 45px;
 }
 
 .round-counter {
@@ -97,7 +98,7 @@ h1 {
 .score-board--placeholder {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: rgb(215, 235, 255);
     color: rgb(10, 15, 25);
     width: 75%;
