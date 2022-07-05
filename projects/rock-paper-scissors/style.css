@@ -4,6 +4,12 @@
     border: 1px solid red;
 } */
 
+/* CUSTOM FONT */
+@font-face {
+    font-family: '8-bit';
+    src: url(./8-bit_quinque-five/Quinquefive-0Wonv.ttf);
+}
+
 /* GENERAL */
 * {
     background-color: rgb(10, 15, 25);
@@ -84,6 +90,11 @@ h1 {
     min-height: 45px;
 }
 
+.play--button {
+    background-color: rgb(10, 15, 25);
+    color: rgb(10, 15, 25);
+}
+
 .round-counter {
     display: flex;
     /* flex-direction: column;
@@ -105,13 +116,14 @@ h1 {
     min-height: 250px;
     padding: 1em;
     border-radius: 2px;
-    font-family: monospace;
 }
 
 .score-board,
 .round-result {
     background-color: inherit;
     color: inherit;
+    font-family: '8-bit', monospace, serif;
+    font-size: 1.3rem;
 }
 
 .score-board {
