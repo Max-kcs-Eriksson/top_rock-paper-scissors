@@ -212,15 +212,11 @@ alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
 /*           Controller buttons          */
 const controllerButtons = document.querySelectorAll('.controller__button');
 controllerButtons.forEach((button => {
-    // INSERT CORRECT FUNCTION
-    // THIS IS FOR TESTING ONLY
     button.addEventListener('click', () => {
         let playerSelection = capFirstLetter(String(button.id));
 
-        console.log(typeof button.id);
-        console.log(playerSelection);
-
-        // return playerSelection;
+            // console.log(typeof button.id);
+            // console.log(playerSelection);
         
         // Computer selects rock, paper, or scissor randomly
         // computerPlay() defined at line XX - XX.
@@ -228,6 +224,14 @@ controllerButtons.forEach((button => {
         // Decides who won the round.
         roundWinner = judgeRound(playerSelection, computerSelection);
 
+        // Display:
+            // Round
+            // Player choice
+            // Computer choice
+            
+            // Who wins
+
+        console.log(`ROUND ${Number(roundCount + 1)}:`);
         console.log(`Player chooses: ${playerSelection}`);
         console.log(`Computer chooses: ${computerSelection}`);
 
@@ -238,5 +242,11 @@ controllerButtons.forEach((button => {
         } else {
             console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
         }
+
+        // Display:
+            // Player score
+            // Computer score
+        console.log(`Player score: ${playerScore}`);
+        console.log(`Computer score: ${computerScore}`);
     });
 }));
