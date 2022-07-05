@@ -129,33 +129,37 @@ function judgeRound(playerSelection, computerSelection) {
     return roundWinner;
 }
 
-function playRound() {
-    console.log(`ROUND ${Number(roundCount + 1)}:`);
-    // Player selection
-    // playerPlay() is defined at line XX - XX.
-    // playerSelection = playerPlay();
-    
-
-    if (typeof playerSelection !== 'string') {
-        alert(`You didn\'t choose a legal value, Player!\n\nPlease try again!`);
-        playerSelection = playerPlay();
-    } else {
-        // Computer selects rock, paper, or scissor randomly
+function playRound(playerSelection) {
+    // Computer selects rock, paper, or scissor randomly
         // computerPlay() defined at line XX - XX.
         computerSelection = computerPlay();
         // Decides who won the round.
         roundWinner = judgeRound(playerSelection, computerSelection);
-        
-    }
-    console.log(`Player chooses: ${playerSelection}`);
-    console.log(`Computer chooses: ${computerSelection}`);
-    if (roundWinner === 'tie') {
-        console.log(`It's a tie!`);
-    } else if (roundWinner === playerName) {
-        console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
-    } else {
-        console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
-    }
+
+        // Display:
+            // Round
+            // Player choice
+            // Computer choice
+            
+            // Who wins
+
+        console.log(`ROUND ${Number(roundCount + 1)}:`);
+        console.log(`Player chooses: ${playerSelection}`);
+        console.log(`Computer chooses: ${computerSelection}`);
+
+        if (roundWinner === 'tie') {
+            console.log(`It's a tie!`);
+        } else if (roundWinner === playerName) {
+            console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
+        } else {
+            console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
+        }
+
+        // Display:
+            // Player score
+            // Computer score
+        console.log(`Player score: ${playerScore}`);
+        console.log(`Computer score: ${computerScore}`);
 }
 
 
@@ -217,36 +221,7 @@ controllerButtons.forEach((button => {
 
             // console.log(typeof button.id);
             // console.log(playerSelection);
-        
-        // Computer selects rock, paper, or scissor randomly
-        // computerPlay() defined at line XX - XX.
-        computerSelection = computerPlay();
-        // Decides who won the round.
-        roundWinner = judgeRound(playerSelection, computerSelection);
 
-        // Display:
-            // Round
-            // Player choice
-            // Computer choice
-            
-            // Who wins
-
-        console.log(`ROUND ${Number(roundCount + 1)}:`);
-        console.log(`Player chooses: ${playerSelection}`);
-        console.log(`Computer chooses: ${computerSelection}`);
-
-        if (roundWinner === 'tie') {
-            console.log(`It's a tie!`);
-        } else if (roundWinner === playerName) {
-            console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
-        } else {
-            console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
-        }
-
-        // Display:
-            // Player score
-            // Computer score
-        console.log(`Player score: ${playerScore}`);
-        console.log(`Computer score: ${computerScore}`);
+        playRound(playerSelection);
     });
 }));
