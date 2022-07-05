@@ -42,10 +42,10 @@ p {
 /* HEADER */
 header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    margin: 1em;
+    margin: 1em 7.5em;
     gap: 1em;
     font-family: sans-serif;
 }
@@ -53,6 +53,20 @@ header {
 h1 {
     font-size: 1.5rem;
     animation: flicker 1.5s infinite alternate;
+}
+
+.power-on-light {
+    border: 7px solid rgb(0, 255, 100);
+    border-radius: 50%;
+    box-shadow: 0 0 3px white,
+                    0 0 7px white,
+                    0 0 14px rgb(0, 255, 100);
+}
+
+/* ONLY TO BALANCE OUT THE SIZE OF THE ELEMENTS TO CENTER THE h1 */
+.power-on-light--empty {
+    border: 7px solid rgb(10, 15, 25);
+    border-radius: 50%;
 }
 
 @keyframes flicker {
