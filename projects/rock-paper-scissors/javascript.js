@@ -170,6 +170,8 @@ function gameOver(roundCount) {
         gameWinner = 'Player';
     } else if (computerScore > playerScore) {
         gameWinner = 'Computer';
+    } else {
+        gameWinner = 'It\'s a tie! No one';
     }
         
     gameOverPara.textContent = `GAME OVER`;
@@ -272,9 +274,14 @@ controllerButtons.forEach((button => {
         if (roundCount > desiredNumRounds) {
         gameOver(roundCount);
         }
-        return playerSelection;
+        return roundCount;
     });
 }));
+
+// console.log('Round count: ' + roundCount);
+// if (roundCount > desiredNumRounds) {
+//     gameOver(roundCount);
+// }
 
 /*   Elements to be used in functions   */
 // In .top-bar
