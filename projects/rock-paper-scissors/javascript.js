@@ -168,10 +168,13 @@ function playRound(playerSelection) {
 function gameOver(roundCount) {
     if (playerScore > computerScore) {
         gameWinner = 'Player';
+        scoreBoardPlaceholderDiv.classList.toggle('player-win');
     } else if (computerScore > playerScore) {
         gameWinner = 'Computer';
+        scoreBoardPlaceholderDiv.classList.toggle('player-lose');
     } else {
         gameWinner = 'It\'s a tie! No one';
+        scoreBoardPlaceholderDiv.classList.toggle('tie');
     }
         
     gameOverPara.textContent = `GAME OVER`;
@@ -293,6 +296,8 @@ roundCounterDiv.appendChild(roundNumberPara);
 
 
 // In .score-board--placeholder //
+const scoreBoardPlaceholderDiv = document.querySelector('.score-board--placeholder');
+
 const scoreBoardDiv = document.querySelector('.score-board');
 
 // Create and append elements with no text content
