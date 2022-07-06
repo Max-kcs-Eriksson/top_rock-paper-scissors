@@ -313,10 +313,7 @@ const roundWinnerPara = document.createElement('p');
 roundResultDiv.appendChild(roundWinnerPara);
 
 
-
-
-
-
+const setResultDiv = document.querySelector('.set-result');
 
 const gameOverPara = document.createElement('p');
 // gameOverPara.textContent = `GAME OVER`;
@@ -324,8 +321,8 @@ const gameWinnerPara = document.createElement('p');
 // gameWinnerPara.textContent = `@{gameWinner} WON`;
 
 let gameWinner = '';
-roundResultDiv.appendChild(gameOverPara);
-roundResultDiv.appendChild(gameWinnerPara);
+setResultDiv.appendChild(gameOverPara);
+setResultDiv.appendChild(gameWinnerPara);
 
 // if (roundCount > desiredNumRounds) {
 //     if (playerScore > computerScore) {

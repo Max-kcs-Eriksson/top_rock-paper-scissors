@@ -133,7 +133,8 @@ h1 {
 }
 
 .score-board,
-.round-result {
+.round-result,
+.set-result {
     background-color: inherit;
     color: inherit;
     font-family: '8-bit', monospace, serif;
