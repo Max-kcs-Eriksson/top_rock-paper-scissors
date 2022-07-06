@@ -130,41 +130,72 @@ function judgeRound(playerSelection, computerSelection) {
 }
 
 function playRound(playerSelection) {
-    // Computer selects rock, paper, or scissor randomly
-        // computerPlay() defined at line XX - XX.
-        computerSelection = computerPlay();
-        // Decides who won the round.
-        roundWinner = judgeRound(playerSelection, computerSelection);
+// Computer selects rock, paper, or scissor randomly
+    // computerPlay() defined at line XX - XX.
+    computerSelection = computerPlay();
+    // Decides who won the round.
+    roundWinner = judgeRound(playerSelection, computerSelection);
 
-        // Display:
-        // Current round count
-        roundNumberPara.textContent = `ROUND: ${Number(roundCount + 1)}`;
-            
-        // Player choice
-        playerSelectionPara.textContent = `Player chooses: ${playerSelection}`;
-        // Computer choice
-        computerSelectionPara.textContent = `Computer chooses: ${computerSelection}`;
-            
-        // Who wins
+    // Display:
+    // Current round count
+    roundNumberPara.textContent = `ROUND: ${Number(roundCount + 1)}`;
+        
+    // Player choice
+    playerSelectionPara.textContent = `Player chooses: ${playerSelection}`;
+    // Computer choice
+    computerSelectionPara.textContent = `Computer chooses: ${computerSelection}`;
+        
+    // Who wins
 
-        if (roundWinner === 'tie') {
-            roundWinnerPara.textContent = `It's a tie!`;
-            // console.log(`It's a tie!`);
-        } else if (roundWinner === playerName) {
-            roundWinnerPara.textContent = `Player wins!\n${playerSelection} beats ${computerSelection}`;
-            // console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
-        } else {
-            roundWinnerPara.textContent = `Computer wins!\n${computerSelection} beats ${playerSelection}`;
-            // console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
-        }
+    if (roundWinner === 'tie') {
+        roundWinnerPara.textContent = `It's a tie!`;
+        // console.log(`It's a tie!`);
+    } else if (roundWinner === playerName) {
+        roundWinnerPara.textContent = `Player wins!\n${playerSelection} beats ${computerSelection}`;
+        // console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
+    } else {
+        roundWinnerPara.textContent = `Computer wins!\n${computerSelection} beats ${playerSelection}`;
+        // console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
+    }
 
-        // Display:
-        // Player score
-        playerScorePara.textContent = `Player score: ${playerScore}`;
-        // Computer score
-        computerScorePara.textContent = `Computer score: ${computerScore}`;
+    // Display:
+    // Player score
+    playerScorePara.textContent = `Player score: ${playerScore}`;
+    // Computer score
+    computerScorePara.textContent = `Computer score: ${computerScore}`;
+}
 
-        roundCount++;
+function gameOver(roundCount) {
+    if (playerScore > computerScore) {
+        gameWinner = 'Player';
+    } else if (computerScore > playerScore) {
+        gameWinner = 'Computer';
+    }
+        
+    gameOverPara.textContent = `GAME OVER`;
+    gameWinnerPara.textContent = `${gameWinner} WON`;
+
+    // Remove event listeners on controller button
+    
+    // Add class name to controller buttons
+        // To apply specific style in CSS
+}
+
+function startRound() {
+    let playerSelection = capFirstLetter(String(button.id));
+        
+    // console.log(typeof button.id);
+    // console.log(playerSelection);
+    
+    playRound(playerSelection);
+
+    roundCount++;
+    console.log(roundCount);
+
+    if (roundCount > desiredNumRounds) {
+    gameOver(roundCount);
+    }
+    return playerSelection;
 }
 
 
@@ -179,9 +210,9 @@ function playRound(playerSelection) {
 */
 
 //  Game:
-let playerScore = 0,
+let playerScore = 0;
     computerScore = 0;
-let desiredNumRounds = 5;
+let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
 let roundCount = 0;
 
 let playerName = 'Player';
@@ -229,11 +260,19 @@ const controllerButtons = document.querySelectorAll('.controller__button');
 controllerButtons.forEach((button => {
     button.addEventListener('click', () => {
         let playerSelection = capFirstLetter(String(button.id));
-        
+
         // console.log(typeof button.id);
         // console.log(playerSelection);
-        
+
         playRound(playerSelection);
+
+        roundCount++;
+        console.log(roundCount);
+
+        if (roundCount > desiredNumRounds) {
+        gameOver(roundCount);
+        }
+        return playerSelection;
     });
 }));
 
@@ -265,3 +304,27 @@ const computerSelectionPara = document.createElement('p');
 roundResultDiv.appendChild(computerSelectionPara);
 const roundWinnerPara = document.createElement('p');
 roundResultDiv.appendChild(roundWinnerPara);
+
+
+
+
+
+
+
+const gameOverPara = document.createElement('p');
+// gameOverPara.textContent = `GAME OVER`;
+const gameWinnerPara = document.createElement('p');
+// gameWinnerPara.textContent = `@{gameWinner} WON`;
+
+let gameWinner = '';
+roundResultDiv.appendChild(gameOverPara);
+roundResultDiv.appendChild(gameWinnerPara);
+
+// if (roundCount > desiredNumRounds) {
+//     if (playerScore > computerScore) {
+//         gameWinner = 'Player';
+//     } else {
+//         gameWinner = 'Computer';
+//     }
+
+// }
