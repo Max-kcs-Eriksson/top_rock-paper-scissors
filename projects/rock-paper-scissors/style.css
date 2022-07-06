@@ -129,7 +129,9 @@ h1 {
     width: 75%;
     min-height: 250px;
     padding: 1em;
+    margin: 1em;
     border-radius: 2px;
+    gap: 3em;
 }
 
 .score-board,
@@ -153,7 +155,11 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 5em;
+    height: 6em;
+}
+
+.set-result {
+    height: 4em;
 }
 
 /* CONTROLLER */
