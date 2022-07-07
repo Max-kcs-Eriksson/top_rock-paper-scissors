@@ -170,7 +170,7 @@ function gameOver(roundCount) {
     gameWinnerPara.textContent = `${gameWinner} WON`;
 }
 
-function startRound() {
+function startGame() {
     /* playerPlay() removes eventlistener when:                        *
     * - desiredNumRounds have been played               */
     controllerButtons.forEach((button => {
@@ -208,7 +208,7 @@ restartButton.addEventListener('click', () => {
 
 /*              Play button              */
 const playButton = document.querySelector('.play--button');
-playButton.addEventListener('click', startRound);
+playButton.addEventListener('click', startGame);
 
 /*****************************************************
 ***************** CONTROLLER BUTTONS *****************
