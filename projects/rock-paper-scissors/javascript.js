@@ -179,6 +179,9 @@ function startGame() {
 
         button.addEventListener('click', playerPlay)
     }));
+
+    restartButton.classList.remove('button--disabled');
+    restartButton.classList.add('button--enabled');
 }
 
 
