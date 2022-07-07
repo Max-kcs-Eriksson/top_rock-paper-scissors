@@ -189,11 +189,17 @@ h1 {
     min-width: 499.578px;
 }
 
-.controller__button {
+.controller__button--enabled,
+.controller__button--disabled {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: .75em 2.5em;
     font-weight: 900;
     font-size: 1.25rem;
+}
+
+.controller__button--disabled,
+.controller__button--disabled p{
+    background-color: rgb(115, 135, 155);
 }

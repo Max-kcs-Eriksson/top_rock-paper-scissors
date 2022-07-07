@@ -217,8 +217,8 @@ function startRound() {
 //  Game:
 let playerScore = 0;
     computerScore = 0;
-let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
-let roundCount = 0;
+// let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
+// let roundCount = 0;
 
 let playerName = 'Player';
 /*
@@ -260,9 +260,35 @@ restartButton.addEventListener('click', () => {
     window.location.reload();
 });
 
-/*           Controller buttons          */
-const controllerButtons = document.querySelectorAll('.controller__button');
-controllerButtons.forEach((button => {
+/*****************************************************
+***************** CONTROLLER BUTTONS *****************
+*****************************************************/
+
+/* Activate Controller buttons for desiredNumRounds */
+let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
+let roundCount = 0;
+
+const enabledControllerButtons = document.querySelectorAll('.controller__button--enabled');
+const disabledControllerButtons = document.querySelectorAll('.controller__button--disabled');
+
+disabledControllerButtons.forEach((button => {
+    button.addEventListener('click', () => {
+        scoreBoardDiv.removeChild(playerScorePara);
+        scoreBoardDiv.removeChild(computerScorePara);
+
+        roundResultDiv.removeChild(playerSelectionPara);
+        roundResultDiv.removeChild(computerSelectionPara);
+        roundResultDiv.removeChild(roundWinnerPara);
+
+        setResultDiv.removeChild(gameOverPara);
+        setResultDiv.removeChild(gameWinnerPara);
+    })
+}));
+
+/*          Controller buttons Click event          */
+// const controllerButtons = document.querySelectorAll('.controller__button');
+
+enabledControllerButtons.forEach((button => {
     button.addEventListener('click', () => {
         let playerSelection = capFirstLetter(String(button.id));
 
@@ -275,7 +301,12 @@ controllerButtons.forEach((button => {
         console.log(roundCount);
 
         if (roundCount > desiredNumRounds) {
-        gameOver(roundCount);
+            gameOver(roundCount);
+            
+            enabledControllerButtons.forEach((button => {
+                button.classList.remove('controller__button--enabled');
+                button.classList.add('controller__button--disabled');
+            }));
         }
         return roundCount;
     });
