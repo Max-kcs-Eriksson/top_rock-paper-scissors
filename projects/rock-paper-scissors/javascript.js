@@ -58,6 +58,11 @@ function playerPlay() {
     roundCount++;
     console.log(roundCount);
 
+    /* GAME MODES *
+    * Uncomment line to select game mode and comment other rules. */
+
+    // if (playerScore === 5 || computerScore === 5) { // First to 5.
+    // if (roundCount > desiredNumRounds && playerScore !== computerScore) { // 5 Rounds an not a tie.
     if (roundCount > desiredNumRounds) {
         gameOver(roundCount);
         
@@ -72,6 +77,7 @@ function playerPlay() {
         }));
     }
 }
+
 
 /* Returns a randomly generated computerSelection: Rock Paper Scissor. */
 function computerPlay(computerSelection) {
