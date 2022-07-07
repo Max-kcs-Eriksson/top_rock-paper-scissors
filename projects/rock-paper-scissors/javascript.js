@@ -171,7 +171,7 @@ function gameOver(roundCount) {
 }
 
 function startGame() {
-    /* playerPlay() removes eventlistener when:                        *
+    /* playerPlay() removes eventlistener when:          *
     * - desiredNumRounds have been played               */
     controllerButtons.forEach((button => {
         button.classList.remove('button--disabled');
@@ -182,6 +182,10 @@ function startGame() {
 
     restartButton.classList.remove('button--disabled');
     restartButton.classList.add('button--enabled');
+
+    
+    powerOnLight.classList.remove('power--off');
+    powerOnLight.classList.add('power--on');
 }
 
 
@@ -264,3 +268,6 @@ const gameWinnerPara = document.createElement('p');
 setResultDiv.appendChild(gameWinnerPara);
 
 let gameWinner = '';
+
+/* POWER LIGHT */
+const powerOnLight = document.querySelector('.power-on-light');
