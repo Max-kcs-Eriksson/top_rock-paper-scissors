@@ -50,34 +50,29 @@ function presentYourself (playerName) {
 //     Round
 
 /* Player selects Rock Paper or Scissors. Input is case-insensitive. */
-function playerPlay (playerSelection) {
-    // Gives playerSelection a string from a prompt.
-    // roundCount + 1 as roundCount starts at zero, to make more readable.
-    
-    // playerSelection = prompt(`Round ${Number(roundCount + 1)} begins.\nPlease choose Rock, Paper, or Scissors`, ``);
+function playerPlay() {
+    let playerSelection = capFirstLetter(String(this.id));
 
-    // Capitalize first letter of playerSelection if it is a string.
-    // This function is defined in line 15 - 25.
-    // Returns playerSelection as null if it's not a string.
+    // console.log(typeof button.id);
+    // console.log(playerSelection);
 
-    // if (typeof playerSelection !== 'string') {
-    //     return playerSelection;
-    // } else {
-    //     playerSelection = capFirstLetter(playerSelection);
-    // }
+    playRound(playerSelection);
 
-    // Return playerSelection if player typed a legal choice in above prompt.
-    // If playerSelection is not Rock Paper or Scissors playerSelection return as undefined.
-    if (playerSelection === 'rock') {
-        return playerSelection;
-    } else if (playerSelection === 'paper') {
-        return playerSelection;
-    } else if (playerSelection === 'scissors') {
-        return playerSelection;
-    } else if (playerSelection === 'scissor') {
-        alert(`I\'m sorry to be the one to tell you Player, it\'s spelled "scissors" with an "s" at the end.\n\nPlease try again!`);
-    } else {
+    roundCount++;
+    console.log(roundCount);
+
+    if (roundCount > desiredNumRounds) {
+        gameOver(roundCount);
         
+        /* When game over:
+         - Change class of controller__button after desiredNumRounds have been played
+         - Makes game stop after desiredNumRounds have been played */
+        controllerButtons.forEach((button => {
+            button.classList.remove('controller__button--enabled');
+            button.classList.add('controller__button--disabled');
+            
+            button.removeEventListener('click', playerPlay);
+        }));
     }
 }
 
@@ -149,13 +144,10 @@ function playRound(playerSelection) {
 
     if (roundWinner === 'tie') {
         roundWinnerPara.textContent = `It's a tie!`;
-        // console.log(`It's a tie!`);
     } else if (roundWinner === playerName) {
         roundWinnerPara.textContent = `Player wins!\n${playerSelection} beats ${computerSelection}`;
-        // console.log(`Player wins!\n${playerSelection} beats ${computerSelection}`);
     } else {
         roundWinnerPara.textContent = `Computer wins!\n${computerSelection} beats ${playerSelection}`;
-        // console.log(`Computer wins!\n${computerSelection} beats ${playerSelection}`);
     }
 
     // Display:
@@ -179,19 +171,11 @@ function gameOver(roundCount) {
         
     gameOverPara.textContent = `GAME OVER`;
     gameWinnerPara.textContent = `${gameWinner} WON`;
-
-    // Remove event listeners on controller button
-    
-    // Add class name to controller buttons
-        // To apply specific style in CSS
 }
 
 function startRound() {
     let playerSelection = capFirstLetter(String(button.id));
-        
-    // console.log(typeof button.id);
-    // console.log(playerSelection);
-    
+
     playRound(playerSelection);
 
     roundCount++;
@@ -206,48 +190,16 @@ function startRound() {
 
 /******************************************
 ******************* GAME ******************
-************* Game execution **************
+*************** Game Rules ****************
 ******************************************/
-
-/*  Take down while working on UI
-
- alert(`Press F12 to open browser console`);
-*/
 
 //  Game:
 let playerScore = 0;
     computerScore = 0;
-// let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
-// let roundCount = 0;
+let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
+let roundCount = 0;
 
 let playerName = 'Player';
-/*
-// Asks for players name and capitalizes the initial.
-// Function defined at line 33 - 41.
-playerName = presentYourself();
-// Re-calls presentYourself() is player closes prompt window.
-if (typeof playerName !== 'string') {
-    alert('If you wish to be anonymous then state so.\nBut you must write something to continue.\n\nTry again!');
-    playerName = presentYourself();
-} else {
-    console.log(`Player name: Player`);
-}
-
-// Play Rock Paper Scissors for desiredNumRounds
-for (roundCount; roundCount < desiredNumRounds; roundCount++) {
-    // singleRound() defined at line XX - XX
-    playRound ();
-
-    console.log(`Player score: ${playerScore}`);
-    console.log(`Computer score: ${computerScore}`);
-}
-
-// Declare highest score
-let setWinner;
-(playerScore > computerScore) ? setWinner = playerName : setWinner = 'Computer';
-alert(`THE WINNER IS ${setWinner}!\n\nSee details in console`);
-
-*/
 
 /******************************************
 ******************* GAME ******************
@@ -264,61 +216,20 @@ restartButton.addEventListener('click', () => {
 ***************** CONTROLLER BUTTONS *****************
 *****************************************************/
 
-/* Activate Controller buttons for desiredNumRounds */
-let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
-let roundCount = 0;
+const controllerButtons = document.querySelectorAll('.controller__button--enabled');
+// const disabledControllerButtons = document.querySelectorAll('.controller__button--disabled');
 
-const enabledControllerButtons = document.querySelectorAll('.controller__button--enabled');
-const disabledControllerButtons = document.querySelectorAll('.controller__button--disabled');
 
-disabledControllerButtons.forEach((button => {
-    button.addEventListener('click', () => {
-        scoreBoardDiv.removeChild(playerScorePara);
-        scoreBoardDiv.removeChild(computerScorePara);
-
-        roundResultDiv.removeChild(playerSelectionPara);
-        roundResultDiv.removeChild(computerSelectionPara);
-        roundResultDiv.removeChild(roundWinnerPara);
-
-        setResultDiv.removeChild(gameOverPara);
-        setResultDiv.removeChild(gameWinnerPara);
-    })
+/*          Controller buttons Click event           *
+* Removes eventlistener when:                        *
+* - desiredNumRounds have been played               */
+controllerButtons.forEach((button => {
+    button.addEventListener('click', playerPlay)
 }));
 
-/*          Controller buttons Click event          */
-// const controllerButtons = document.querySelectorAll('.controller__button');
-
-enabledControllerButtons.forEach((button => {
-    button.addEventListener('click', () => {
-        let playerSelection = capFirstLetter(String(button.id));
-
-        // console.log(typeof button.id);
-        // console.log(playerSelection);
-
-        playRound(playerSelection);
-
-        roundCount++;
-        console.log(roundCount);
-
-        if (roundCount > desiredNumRounds) {
-            gameOver(roundCount);
-            
-            enabledControllerButtons.forEach((button => {
-                button.classList.remove('controller__button--enabled');
-                button.classList.add('controller__button--disabled');
-            }));
-        }
-        return roundCount;
-    });
-}));
-
-// console.log('Round count: ' + roundCount);
-// if (roundCount > desiredNumRounds) {
-//     gameOver(roundCount);
-// }
 
 /*   Elements to be used in functions   */
-// In .top-bar
+// In .top-bar //
 const roundCounterDiv = document.querySelector('.round-counter');
 
 // Create and append elements with no text content
@@ -337,7 +248,7 @@ scoreBoardDiv.appendChild(playerScorePara);
 const computerScorePara = document.createElement('p');
 scoreBoardDiv.appendChild(computerScorePara);
 
-
+// In .round-result //
 const roundResultDiv = document.querySelector('.round-result');
 
 // Create and append elements with no text content
@@ -348,23 +259,12 @@ roundResultDiv.appendChild(computerSelectionPara);
 const roundWinnerPara = document.createElement('p');
 roundResultDiv.appendChild(roundWinnerPara);
 
-
+// In .set-result //
 const setResultDiv = document.querySelector('.set-result');
-
+// Create and append elements with no text content
 const gameOverPara = document.createElement('p');
-// gameOverPara.textContent = `GAME OVER`;
-const gameWinnerPara = document.createElement('p');
-// gameWinnerPara.textContent = `@{gameWinner} WON`;
-
-let gameWinner = '';
 setResultDiv.appendChild(gameOverPara);
+const gameWinnerPara = document.createElement('p');
 setResultDiv.appendChild(gameWinnerPara);
 
-// if (roundCount > desiredNumRounds) {
-//     if (playerScore > computerScore) {
-//         gameWinner = 'Player';
-//     } else {
-//         gameWinner = 'Computer';
-//     }
-
-// }
+let gameWinner = '';
