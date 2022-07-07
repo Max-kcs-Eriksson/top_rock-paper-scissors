@@ -38,7 +38,7 @@ p {
     transition: .04s;
 }
 
-.button:active {
+.button--enabled:active {
     transform: scale(1.05);
     box-shadow: 0 0 3px white,
                 0 0 7px white,
