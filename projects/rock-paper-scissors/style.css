@@ -111,11 +111,6 @@ h1 {
     min-height: 45px;
 }
 
-/* .play--button {
-    background-color: rgb(10, 15, 25);
-    color: rgb(10, 15, 25);
-} */
-
 .round-counter {
     display: flex;
     /* flex-direction: column;
