@@ -63,8 +63,18 @@ h1 {
 }
 
 .power-on-light {
-    border: 7px solid rgb(0, 255, 100);
     border-radius: 50%;
+}
+
+.power--off {
+    border: 7px solid rgb(255, 0, 100);
+    box-shadow: 0 0 3px white,
+                    0 0 7px white,
+                    0 0 14px rgb(255, 0, 100);
+}
+
+.power--on {
+    border: 7px solid rgb(0, 255, 100);
     box-shadow: 0 0 3px white,
                     0 0 7px white,
                     0 0 14px rgb(0, 255, 100);
