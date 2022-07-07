@@ -53,9 +53,6 @@ function presentYourself (playerName) {
 function playerPlay() {
     let playerSelection = capFirstLetter(String(this.id));
 
-    // console.log(typeof button.id);
-    // console.log(playerSelection);
-
     playRound(playerSelection);
 
     roundCount++;
@@ -64,12 +61,12 @@ function playerPlay() {
     if (roundCount > desiredNumRounds) {
         gameOver(roundCount);
         
-        /* When game over:
-         - Change class of controller__button after desiredNumRounds have been played
-         - Makes game stop after desiredNumRounds have been played */
+        /* When desiredNumRounds have been played:
+         - Change class of controller__button after
+         - Makes controller buttons not play the game */
         controllerButtons.forEach((button => {
-            button.classList.remove('controller__button--enabled');
-            button.classList.add('controller__button--disabled');
+            button.classList.remove('button--enabled');
+            button.classList.add('button--disabled');
             
             button.removeEventListener('click', playerPlay);
         }));
@@ -174,17 +171,14 @@ function gameOver(roundCount) {
 }
 
 function startRound() {
-    let playerSelection = capFirstLetter(String(button.id));
+    /* playerPlay() removes eventlistener when:                        *
+    * - desiredNumRounds have been played               */
+    controllerButtons.forEach((button => {
+        button.classList.remove('button--disabled');
+        button.classList.add('button--enabled');
 
-    playRound(playerSelection);
-
-    roundCount++;
-    console.log(roundCount);
-
-    if (roundCount > desiredNumRounds) {
-    gameOver(roundCount);
-    }
-    return playerSelection;
+        button.addEventListener('click', playerPlay)
+    }));
 }
 
 
@@ -212,20 +206,19 @@ restartButton.addEventListener('click', () => {
     window.location.reload();
 });
 
+/*              Play button              */
+const playButton = document.querySelector('.play--button');
+playButton.addEventListener('click', startRound);
+
 /*****************************************************
 ***************** CONTROLLER BUTTONS *****************
 *****************************************************/
 
-const controllerButtons = document.querySelectorAll('.controller__button--enabled');
-// const disabledControllerButtons = document.querySelectorAll('.controller__button--disabled');
+const controllerButtons = document.querySelectorAll('.controller__button');
 
 
 /*          Controller buttons Click event           *
-* Removes eventlistener when:                        *
-* - desiredNumRounds have been played               */
-controllerButtons.forEach((button => {
-    button.addEventListener('click', playerPlay)
-}));
+*             Activated with playButton              */
 
 
 /*   Elements to be used in functions   */
