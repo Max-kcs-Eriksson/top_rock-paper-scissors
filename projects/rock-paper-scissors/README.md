@@ -21,3 +21,8 @@ Controller buttons:
 * Calls playRound() which in turn calls computerPlay() than judgeRound().
 Restart:
 * Reloads the entire page.
+
+
+## Notes
+Custom font is credited to GGBotNet (https://ggbot.net/fonts/).
+* The license is found as a .txt in /8-bit_quinque-five/misc in this repos.
