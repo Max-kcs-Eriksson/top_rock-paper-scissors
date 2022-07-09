@@ -220,14 +220,13 @@ let playerName = 'Player';
 /*             Restart button            */
 const restartButton = document.querySelector('.restart--button');
 restartButton.addEventListener('click', () => {
-    // window.location.reload();
     // Resets game variables.
     playerScore = 0;
     computerScore = 0;
     desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
     roundCount = 0;
 
-    // Undo DOM manipulations
+    // Undo DOM manipulations to reset classes and text content.
     roundNumberPara.textContent = '';
     playerSelectionPara.textContent = '';
     computerSelectionPara.textContent = '';
@@ -244,6 +243,9 @@ restartButton.addEventListener('click', () => {
     }
     gameOverPara.textContent = '';
     gameWinnerPara.textContent = '';
+
+    // Restarts game.
+    startGame();
 });
 
 /*              Play button              */
