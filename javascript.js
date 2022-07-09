@@ -205,7 +205,7 @@ function startGame() {
 ******************************************/
 
 //  Game:
-let playerScore = 0;
+let playerScore = 0,
     computerScore = 0;
 let desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
 let roundCount = 0;
@@ -220,7 +220,30 @@ let playerName = 'Player';
 /*             Restart button            */
 const restartButton = document.querySelector('.restart--button');
 restartButton.addEventListener('click', () => {
-    window.location.reload();
+    // window.location.reload();
+    // Resets game variables.
+    playerScore = 0;
+    computerScore = 0;
+    desiredNumRounds = 5 - 1; // Minus 1 to offset roundCount starting at 0.
+    roundCount = 0;
+
+    // Undo DOM manipulations
+    roundNumberPara.textContent = '';
+    playerSelectionPara.textContent = '';
+    computerSelectionPara.textContent = '';
+    roundWinnerPara.textContent = '';
+    playerScorePara.textContent = '';
+    computerScorePara.textContent = '';
+
+    if (gameWinner === 'Player') {
+        scoreBoardPlaceholderDiv.classList.toggle('player-win');
+    } else if (gameWinner === 'Computer') {
+        scoreBoardPlaceholderDiv.classList.toggle('player-lose');
+    } else {
+        scoreBoardPlaceholderDiv.classList.toggle('tie');
+    }
+    gameOverPara.textContent = '';
+    gameWinnerPara.textContent = '';
 });
 
 /*              Play button              */
