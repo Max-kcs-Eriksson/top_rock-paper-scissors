@@ -189,6 +189,8 @@ function startGame() {
     restartButton.classList.remove('button--disabled');
     restartButton.classList.add('button--enabled');
 
+    scoreBoardPlaceholderDiv.classList.toggle('on');
+
     
     powerOnLight.classList.remove('power--off');
     powerOnLight.classList.add('power--on');
